@@ -11,8 +11,8 @@ int main(void)
     srand(time(NULL));
 
     /* Grpah size. */
-    int rows = 20;
-    int cols = 20;
+    int rows = 50;
+    int cols = 50;
     int n_edges = 2*rows*cols - rows - cols;
 
     /* Number of labels per node. */
@@ -110,7 +110,7 @@ int main(void)
     G->print_every(100);
 
     /* Optimise using the subgradient method. */
-    G->optimise(0.8, 5000, OptimStrategy::STEP);
+    G->optimise(1.0, 5000, OptimStrategy::ADAPTIVE_LDECAY);
 
     delete [] unaries;
     free(pairwise);

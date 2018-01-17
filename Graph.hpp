@@ -940,7 +940,7 @@ void Graph::optimise_slaves(void)
 {
     /* Optimise all slaves in this Graph. */
     /* For now, I assume they are only cycle slaves. */
-    /* #pragma omp parallel for */
+    #pragma omp parallel for
     for(int i = 0; i < n_slaves; i ++)
     {
         /* Check whether this slave is to be solved. */
