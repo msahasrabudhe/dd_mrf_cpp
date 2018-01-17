@@ -785,11 +785,6 @@ void Graph::finalise_decomposition(void)
         check_slaves[s] = true;
     }
 
-    for(int e = 0; e < n_nodes; e ++)
-    {
-        //   printf("nodes_in_slaves[%d].size() = %d\n", e, nodes_in_slaves[e].size());
-    }
-
     /* Allocate memory for updates. */
     node_updates = new ValType ** [n_slaves];
     edge_updates = new ValType ** [n_slaves];
@@ -814,26 +809,6 @@ void Graph::finalise_decomposition(void)
     _mark_slave_updates    = new bool *[2];
     _mark_slave_updates[0] = new bool [n_slaves];
     _mark_slave_updates[1] = new bool [n_slaves];
-
-    /*
-    for(int i = 0; i < n_nodes; i ++)
-    {
-        printf("Node %3d:\t", i);
-        for(unsigned int s = 0; s < nodes_in_slaves[i].size(); s ++)
-        {
-            printf("%d ", nodes_in_slaves[i][s]);
-        }
-        printf("\n");
-    }
-    for(int e = 0; e < n_edges; e ++)
-    {
-        printf("Edge %3d:\t", e);
-        for(unsigned int s = 0; s < edges_in_slaves[e].size(); s ++)
-        {
-            printf("%d ", edges_in_slaves[e][s]);
-        }
-        printf("\n");
-    } */
 }                       /* End of Graph::finalise_decomposition() */
 
 bool Graph::check_decomposition(void)
@@ -939,7 +914,6 @@ bool Graph::check_decomposition(void)
 void Graph::optimise_slaves(void)
 {
     /* Optimise all slaves in this Graph. */
-    /* For now, I assume they are only cycle slaves. */
     #pragma omp parallel for
     for(int i = 0; i < n_slaves; i ++)
     {
