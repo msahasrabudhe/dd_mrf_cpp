@@ -11,9 +11,12 @@ int main(void)
     srand(time(NULL));
 
     /* Grpah size. */
-    int rows = 50;
-    int cols = 50;
+    int rows = 100;
+    int cols = 100;
     int n_edges = 2*rows*cols - rows - cols;
+
+    double a_start  = 1.0;
+    int max_iter    = 5000;
 
     /* Number of labels per node. */
     int nl = 2;
@@ -107,10 +110,10 @@ int main(void)
     G->finalise_decomposition();
 
     /* Print optimisation status every 100 iterations. */
-    G->print_every(100);
+    G->print_every(1);
 
     /* Optimise using the subgradient method. */
-    G->optimise(1.0, 5000, OptimStrategy::ADAPTIVE_LDECAY);
+    G->optimise(a_start, max_iter, OptimStrategy::ADAPTIVE_LDECAY);
 
     delete [] unaries;
     free(pairwise);
