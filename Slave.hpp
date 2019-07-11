@@ -472,7 +472,7 @@ void Slave::_max_prod_bp(void)
     /* Convert energies to probabilities: Apply the exponential, and divide by the total
        for each factor. This converts them into probabilities, signifying that lower energy
        states are more probable. */
-    ValType scaler = 0.01;
+    ValType scaler = 1.0;
     ValType total_adj_pot;
     for(int i = 0; i < n_nodes; i ++)
     {
