@@ -914,7 +914,7 @@ bool Graph::check_decomposition(void)
 void Graph::optimise_slaves(void)
 {
     /* Optimise all slaves in this Graph. */
-    #pragma omp parallel for
+    /* #pragma omp parallel for */
     for(int i = 0; i < n_slaves; i ++)
     {
         /* Check whether this slave is to be solved. */
