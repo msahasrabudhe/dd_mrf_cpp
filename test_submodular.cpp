@@ -115,6 +115,8 @@ int main(void)
     /* Optimise using the subgradient method. */
     G->optimise(a_start, max_iter, OptimStrategy::ADAPTIVE_LDECAY);
 
+    /* The best solution found lies in the vector G->best_primal_solution. */
+
     delete [] unaries;
     free(pairwise);
     delete [] n_labels;
